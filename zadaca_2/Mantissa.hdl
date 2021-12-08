@@ -1,0 +1,8 @@
+CHIP Mantissa {
+
+	IN in[16];
+	OUT out[16];
+	
+	PARTS:
+	Or16(a[0..9] = in[0..9], a[10..14] = false, out = out);
+}

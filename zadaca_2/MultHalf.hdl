@@ -1,0 +1,33 @@
+CHIP MultHalf {
+
+	IN a[16], b[16];
+	OUT out[16];
+	
+	PARTS:
+    TwosCompl(in = a, out = compla);
+	TwosCompl(in = b, out = complb);
+	
+	Xor(a = a[15], b = b[15], out = sel);
+	
+	Mux16(a = a, b = compla, sel = a[15], out = a1);
+	Mux16(a = b, b = complb, sel = b[15], out = b1);
+	
+	Exp(in = a1, out = expa);
+	Exp(in = b1, out = expb);
+	
+	Mantissa(in = a1, out = mana);
+	Mantissa(in = b1, out = manb);
+	
+	Add16(a = expa, b = expb, out = exp1);
+	Mult(a = mana, b = manb, out = mantissa1);
+	
+	Exp(in = exp1, out = exp);
+	Mantissa(in = mantissa1, out = mantissa);
+	
+	Or16(a = exp, b = mantissa, out = final);
+	
+	TwosCompl(in = final, out = complfinal);
+	
+	Mux16(a = final, b = complfinal, sel = sel, out = out);
+
+}
