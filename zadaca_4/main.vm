@@ -1,0 +1,33 @@
+sp
+call main.Main 0
+ep
+
+function Main 0
+	push constant 33
+	push constant 3
+	push constant 17
+	call mid.Mid 3
+	pop static 0
+	
+	push constant 8
+	call fibonacci.Fibonacci 1
+	pop static 1
+
+	push constant 27
+	push constant 5
+	call div.Div 2
+	pop static 3
+
+	push constant 27
+	push constant 5
+	call mod.Mod 2
+	pop static 2
+	
+	push pointer 1
+	push constant 5
+	push constant 11
+	call BS.Search 3
+	pop static 4
+	
+	return
+	

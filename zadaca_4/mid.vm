@@ -1,0 +1,80 @@
+function Mid 3
+	push constant 0  
+	pop local 0      // max = 0
+	push constant 0
+	pop local 1      // mid = 0
+	
+	push argument 0
+	push argument 1
+	gt
+	if-goto MAX      // a > b
+    
+	// b > a
+	push argument 1
+	pop local 0      // max = b
+	push argument 0
+	pop local 1      // mid = a
+	
+	
+	push argument 2
+	push local 1
+	gt
+	if-goto MID_1     // c > mid
+	
+	// c < mid
+	push local 1
+	return           // return mid
+	
+	label MID_1
+	  push argument 2
+	  pop local 1    // mid = c
+	  
+	push argument 2
+	push local 0
+	gt               // c > max
+	if-goto RJ_1
+	
+	// c < max
+	push local 1
+	return           // return mid (mid = c if c < max)
+	
+	label RJ_1
+	  push local 0
+	  return         // return max
+	
+	
+	
+	// a > b
+	
+	label MAX
+	  push argument 0
+	  pop local 0
+	  push argument 1
+	  pop local 1
+	
+
+	push argument 2
+	push local 1
+	gt
+	if-goto MID_2     // c > mid
+	
+	// c < mid
+	push local 1
+	return
+	
+	label MID_2
+	  push argument 2
+	  pop local 1    // mid = c
+	  
+	push argument 2
+	push local 0
+	gt               // c > max
+	if-goto RJ_2
+	
+	// c < max
+	push local 1
+	return          // return mid (mid = c if c < max)
+	
+	label RJ_2
+	  push local 0
+	  return         // return max
