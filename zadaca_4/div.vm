@@ -1,11 +1,11 @@
 function Div 2
-	push constant 0
-	pop local 0
+    push constant 0
+    pop local 0
 
-	push argument 0
-	pop local 1
+    push argument 0
+    pop local 1
 	
-	label LOOP
+    label LOOP
     push local 1
     push argument 1
     lt
@@ -22,6 +22,6 @@ function Div 2
     pop local 1
     goto LOOP
 	
-	label END
-	push local 0
-	return
+    label END
+    push local 0
+    return
