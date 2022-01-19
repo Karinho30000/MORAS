@@ -1,0 +1,42 @@
+function Search 3
+    push constant 0
+    pop local 0      //cnt = 0
+    
+    label LOOP
+    push argument 1
+    push constant 0
+    eq
+    if-goto END
+
+    push that 0
+    push argument 2
+    eq
+    if-goto FOUND
+
+    push constant 1
+    push local 0
+    add              //cnt++
+    pop local 0
+
+    push constant 1
+    push pointer 1
+    add              //that++
+    pop pointer 1
+
+    push argument 1
+    push constant 1
+    sub
+    pop argument 1
+
+    goto LOOP
+
+
+    label FOUND
+    push local 0
+    return
+
+    label END
+    push constant 0
+    push constant 1
+    sub
+    return
