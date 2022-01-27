@@ -1,0 +1,153 @@
+function Main.main 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push constant 0
+push constant 255
+push constant 0
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+push constant 0
+push constant 0
+push constant 255
+call Screen.drawLine 4
+pop temp 0
+push constant 128
+push constant 0
+push constant 128
+push constant 255
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+push constant 128
+push constant 255
+push constant 128
+call Screen.drawLine 4
+pop temp 0
+push constant 255
+push constant 0
+push constant 255
+push constant 255
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+push constant 255
+push constant 255
+push constant 255
+call Screen.drawLine 4
+pop temp 0
+push constant 96
+push constant 96
+push constant 96
+push constant 160
+call Screen.drawLine 4
+pop temp 0
+push constant 96
+push constant 160
+push constant 160
+push constant 160
+call Screen.drawLine 4
+pop temp 0
+push constant 160
+push constant 160
+push constant 160
+push constant 96
+call Screen.drawLine 4
+pop temp 0
+push constant 160
+push constant 96
+push constant 96
+push constant 96
+call Screen.drawLine 4
+pop temp 0
+call Main.draw 0
+pop temp 0
+push constant 0
+return
+function Main.draw 7
+push constant 128
+pop local 5
+push constant 128
+pop local 6
+push constant 32
+neg
+pop local 4
+label WHILE_EXP0
+push local 4
+push constant 32
+lt
+not
+if-goto WHILE_END0
+push local 4
+call Main.f 1
+push constant 32
+lt
+push local 4
+call Main.f 1
+push constant 32
+neg
+gt
+and
+push local 4
+push constant 1
+add
+call Main.f 1
+push constant 32
+lt
+and
+push local 4
+push constant 1
+add
+call Main.f 1
+push constant 32
+neg
+gt
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 6
+push local 4
+call Main.f 1
+sub
+pop local 2
+push local 6
+push local 4
+push constant 1
+add
+call Main.f 1
+sub
+pop local 3
+push local 5
+push local 4
+add
+pop local 0
+push local 5
+push local 4
+add
+push constant 1
+add
+pop local 1
+push local 0
+push local 2
+push local 1
+push local 3
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE0
+push local 4
+push constant 1
+add
+pop local 4
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Main.f 0
+push argument 0
+push argument 0
+call Math.multiply 2
+return
