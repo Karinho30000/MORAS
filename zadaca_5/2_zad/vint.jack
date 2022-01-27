@@ -1,0 +1,90 @@
+class vint{	
+	field Array A;
+	field int capacity;
+	constructor vint new(int n) {
+		let capacity = 1;
+		if(~(n < 0)){
+		  while(n > 0){
+		    let capacity = capacity * 2;
+		    let n = n - 1;
+		  }
+		}
+		let A = Array.new(capacity); 
+		return this;
+		}
+
+	method Array get_Array(){
+		return A;
+	}
+
+	method int len(){
+		return capacity;
+	}
+	method void set(int k, int v){
+		let A[k] = v;
+		return;
+	}
+
+	method void resize(int m){
+    var int i, old;
+    var Array B;
+    let old = capacity;
+    let capacity = 1;
+    if(~(m < 0)){
+      while(m > 0){
+        let capacity = capacity * 2;
+        let m = m - 1;
+      }
+    }
+    let B = Array.new(capacity);
+    let i = 0;
+    while(i < old){
+      let B[i] = A[i];
+      let i = i + 1;
+    }
+    let A = B;
+    return;
+	}
+
+	function bool is_eq(vint A, vint B){
+		var int i;
+		var Array arrA, arrB;
+		let arrA = A.get_Array();
+		let arrB = B.get_Array();
+		if (~(A.len() = B.len())) {
+			return false;
+		}
+		let i = 0;
+		while (i < A.len()){
+			if(~(arrA[i] = arrB[i])){
+				return false;
+			}
+			let i = i + 1;
+		}
+		return true;
+
+
+	}
+	function bool elems(vint A, vint B){
+		var Array X, Y;
+		var int i, length;
+		let length = A.len();
+		if(~(A.len() = A.len())){
+			return false;
+		} 
+		let X = A.get_Array();
+		let Y = B.get_Array();
+		do Qsort.quicksort(X, 0, length - 1);
+		do Qsort.quicksort(Y, 0, length - 1);
+		let i = 0;
+
+		while(i<length){
+			if(~(X[i]=Y[i])){
+				return false;
+				}
+			let i = i + 1;
+		}
+		return true;
+
+	}
+}
