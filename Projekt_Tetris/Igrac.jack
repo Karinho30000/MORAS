@@ -1,0 +1,67 @@
+class Igrac {
+
+  field int rez;
+  field int lvl;
+
+  constructor Igrac new() {
+    let rez = 0;
+    let lvl = 1;
+
+    return this;
+  }
+
+  method void dispose() {
+    do Memory.deAlloc(this);
+	return;
+  }
+  
+  method void startLvl(int nivo) {
+    
+    let lvl = nivo;
+    do Rezultat.printLvl(nivo);
+    return;
+  }
+
+
+  method int getLvl() {
+    return lvl;
+  }
+
+  method void addScoreForLineClear(int line_count) {
+    var int base;
+
+    if (~(line_count > 0)) {
+      return;
+    }
+
+    if (line_count = 1) {
+      let base = 100;
+    }
+    if (line_count = 2) {
+      let base = 200;
+    }
+    if (line_count = 3) {
+      let base = 500;
+    }
+    if (line_count = 4) {
+	  let base = 1000;
+    }
+
+    do addScore(base * lvl);
+
+    return;
+  }
+
+  method void addScoreForSoftDrop() {
+    do addScore(1);
+    return;
+  }
+
+
+  method void addScore(int dif) {
+    let rez = rez + dif;
+    do Rezultat.printRezultat(rez);
+
+    return;
+  }
+}

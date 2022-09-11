@@ -1,0 +1,47 @@
+class Clock {
+  static int unitTime;
+  static int landingTime;
+
+  field int time;
+
+  constructor Clock new() {
+    return this;
+  }
+
+  method void dispose() {
+    do Memory.deAlloc(this);
+    return;
+  }
+
+  function void setLandingTime(int t) {
+    let landingTime = t;
+    return;
+  }
+
+  function void setUnitTime(int t) {
+    let unitTime = t;
+    return;
+  }
+
+  method void chargeTime(boolean isLanded) {
+    if(isLanded) {
+      let time = landingTime;
+    } 
+	else {
+      let time = unitTime;
+    }
+    return;
+  }
+
+  method boolean tick(boolean isMovable) {
+    do Sys.wait(2);
+    if (~(time < 0)) {
+      let time = time - 10;
+      return false;
+    } 
+	else {
+      do chargeTime(~isMovable);
+      return true;
+    }
+  }
+}

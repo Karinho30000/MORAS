@@ -1,0 +1,51 @@
+class NextProzor {
+  static int disp_x0, disp_x1, disp_y0, disp_y1;
+  static int blockv, blockr;
+
+  function void init() {
+
+    let blockv = 12;
+    let blockr = 3;
+    let disp_x0 = 392;
+    let disp_y0 = 82;
+    let disp_x1 = disp_x0 + 56 - blockr;
+    let disp_y1 = disp_y0 + 56 - blockr;
+
+    do Screen.drawRectangle(disp_x0, disp_y0, disp_x1, disp_y1);
+    do Screen.setColor(false);
+    do Screen.drawRectangle(disp_x0 + 2, disp_y0 + 2, disp_x1 - 2, disp_y1 - 2);
+    do Screen.setColor(true);
+
+    return;
+  }
+
+  function void drawCell(int i, int j, boolean three_column) {
+    var int x, y;
+    var int offset_x, offset_y;
+
+    if (three_column) {
+      let offset_x = 4 + (blockv/2);
+    } 
+	else {
+      let offset_x = 4;
+    }
+	
+    let offset_y = 16;
+
+    let x = disp_x0 + (i * blockv) + offset_x;
+    let y = disp_y0 + (j * blockv) + offset_y;
+
+    do Screen.drawRectangle(x, y, x + blockv - blockr, y + blockv - blockr);
+	
+    return;
+  }
+
+  function void clear() {
+    do Screen.setColor(false);
+    do Screen.drawRectangle(disp_x0 + 2, disp_y0 + 2, disp_x1 - 2, disp_y1 - 2);
+    do Screen.setColor(true);
+
+    return;
+  }
+}
+

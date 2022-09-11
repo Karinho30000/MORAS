@@ -1,0 +1,208 @@
+class GlavniProzor {
+  static int x0, x1, y0, y1;
+  static int blockv, blockr;
+  static int win_x0, win_x1, win_y0, win_y1;
+
+  function void init() {
+    var int i, j;
+    var int i0, i1, j0, j1;
+
+    let blockv = 12;
+    let blockr = 3;
+    let win_x0 = 206; 
+    let win_y0 = 10;
+    let win_x1 = win_x0 + 120;
+    let win_y1 = win_y0 + 240;
+    let x0 = win_x0 - blockv;
+    let y0 = win_y0 - (2 * blockv);
+	
+    do GlavniProzor.okvir();
+
+    return;
+  }
+
+
+  function void okvir() {
+    do Screen.drawRectangle(win_x0 - 4, win_y0 - 4, win_x1 + 4 - blockr, win_y1 + 4 - blockr);
+    do GlavniProzor.clear();
+
+    return;
+  }
+
+  function void clear() {
+    do Screen.setColor(false);
+    do Screen.drawRectangle(win_x0 - 2, win_y0 - 2, win_x1 + 2 - blockr, win_y1 + 2 - blockr);
+    do Screen.setColor(true);
+
+    return;
+  }
+
+  function void drawCell(int i, int j) {
+    var int x, y;
+	
+    let x = x0 + (i * blockv);
+    let y = y0 + (j * blockv);
+
+    do Screen.drawRectangle(x, y, x + blockv - blockr, y + blockv - blockr);
+	
+    return;
+  }
+
+  function void eraseCell(int i, int j) {
+    var int x, y;
+	
+    let x = x0 + (i * blockv);
+    let y = y0 + (j * blockv);
+
+    do Screen.setColor(false);
+    do Screen.drawRectangle(x, y, x + blockv - blockr, y + blockv - blockr);
+    do Screen.setColor(true);
+    return;
+  }
+
+  function int waitStart() {
+    var int i;
+    var int key;
+
+    do Screen.drawRectangle(219, 58, 310, 204);
+    do Screen.setColor(false);
+    do Screen.drawRectangle(221, 60, 308, 202);
+    do Output.moveCursor(11, 31);
+    do Output.printString("START");
+    do Output.moveCursor(12, 31);
+    do Output.printString("GAME");
+
+    let i = 1;
+    let key = 0;
+    while (~(key = 128)) { 
+      let key = Keyboard.keyPressed();
+
+      if (i = 16383) {
+        let i = 1;
+      } 
+	  else {
+        let i = i + 1;
+      }
+    }
+
+    while (~(key = 0)) {
+      let key = Keyboard.keyPressed();
+
+      if (i = 16383) {
+        let i = 1;
+      } 
+	  else {
+        let i = i + 1;
+      }
+    }
+
+    do GlavniProzor.clear();
+    return i;
+  }
+  
+  function int waitDif(){
+	var int i;
+    var int key;
+	var int dif;
+	
+    do Output.moveCursor(8, 28); 
+    do Output.printString("Game mode:");
+	do Output.moveCursor(10, 28);
+	do Output.printString("NOOB");
+	do Output.moveCursor(12, 28);
+	do Output.printString("MID");
+	do Output.moveCursor(14, 28);
+	do Output.printString("EXPERT");
+	do Screen.drawRectangle(290, 110, 300, 120);
+	
+	let dif = 1;
+	
+	while (~(key = 128)) {
+		let key = Keyboard.keyPressed();
+		
+		if (key = 131 & ~(dif = 1)){
+			if (dif = 5){
+				while (~(key = 0)){
+					let key = Keyboard.keyPressed();
+					do Screen.setColor(false);
+					do Screen.drawRectangle(290, 132, 300, 142);
+					do Screen.setColor(true);
+					do Screen.drawRectangle(290, 110, 300, 120);
+					let dif = 1;
+					}
+			}
+			else {
+				while (~(key = 0)){
+					let key = Keyboard.keyPressed();
+					do Screen.setColor(false);
+					do Screen.drawRectangle(290, 154, 300, 164);
+					do Screen.setColor(true);
+					do Screen.drawRectangle(290, 132, 300, 142);
+					let dif = 5;
+					}
+			}
+			
+		}
+		if (key = 133 & ~(dif = 10)){
+			if (dif = 5){
+				while (~(key = 0)){
+					let key = Keyboard.keyPressed();
+					do Screen.setColor(false);
+					do Screen.drawRectangle(290, 132, 300, 142);
+					do Screen.setColor(true);
+					do Screen.drawRectangle(290, 154, 300, 164);
+					let dif = 10;
+				}
+			}
+			else {
+				while (~(key = 0)){
+					let key = Keyboard.keyPressed();
+					do Screen.setColor(false);
+					do Screen.drawRectangle(290, 110, 300, 120);
+					do Screen.setColor(true);
+					do Screen.drawRectangle(290, 132, 300, 142);
+					let dif = 5;
+					}
+			}
+			
+		}
+		
+      let key = Keyboard.keyPressed();
+		
+      if (i = 16383) {
+        let i = 1;
+      } 
+	  else {
+        let i = i + 1;	
+      }
+    }
+
+    while (~(key = 0)) {
+      let key = Keyboard.keyPressed();
+
+      if (i = 16383) {
+        let i = 1;
+      } 
+	  else {
+        let i = i + 1;
+      }
+    }
+
+    do GlavniProzor.clear();
+	
+    return dif; 
+  }
+  
+
+  function void gameOver() {
+    do Screen.drawRectangle(220, 108, 308, 153);
+    do Screen.setColor(false);
+    do Screen.drawRectangle(222, 110, 306, 151);
+    do Output.moveCursor(11, 31);
+    do Output.printString("GAME");
+    do Output.moveCursor(12, 31);
+    do Output.printString("OVER");
+
+    return;
+  }
+}

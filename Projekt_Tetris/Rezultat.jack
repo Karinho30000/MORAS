@@ -1,0 +1,53 @@
+class Rezultat {
+
+  function void init() {
+
+    do Output.moveCursor(8, 8);
+    do Output.printString("Score:");
+    do Output.moveCursor(10, 8);
+    do Output.printString("Level:");
+    do Output.moveCursor(6, 49);
+    do Output.printString("Next:");
+
+    do Rezultat.printRezultat(0);
+    do Rezultat.printLvl(0);
+	
+    return;
+  }
+
+  function void printRezultat(int rez) {
+    do Output.moveCursor(8, 15);
+    do Output.printString("     ");
+    do Output.moveCursor(8, 15);
+    do Output.printInt(rez);
+	
+    return;
+  }
+
+  function void printLvl(int nivo) {
+    do Output.moveCursor(10, 15);
+    do Output.printString("     ");
+    do Output.moveCursor(10, 15);
+    
+	if (nivo = 1) {
+		do Output.printString("NOOB");
+	}
+	if (nivo = 5) {
+		do Output.printString("MID");
+	}
+	if (nivo = 10) {
+		do Output.printString("EXPERT");
+	}
+	
+    return;
+  }
+
+
+  function void clear() {
+    do Screen.setColor(false);
+    do Screen.drawRectangle(392, 220, 511, 242);
+    do Screen.setColor(true);
+
+    return;
+  }
+}

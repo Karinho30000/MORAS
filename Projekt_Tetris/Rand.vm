@@ -1,0 +1,173 @@
+function Rand.init 1
+push argument 0
+call Rand.setSeed 1
+pop temp 0
+push constant 7
+call Array.new 1
+pop static 0
+push constant 7
+call Array.new 1
+pop static 1
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 7
+lt
+not
+if-goto WHILE_END0
+push local 0
+push static 1
+add
+push local 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+call Rand.loadBag 0
+pop temp 0
+call Rand.loadBag 0
+pop temp 0
+push constant 0
+pop static 2
+push constant 0
+return
+function Rand.take 1
+push static 2
+push static 0
+add
+pop pointer 1
+push that 0
+pop local 0
+push static 2
+push constant 1
+add
+pop static 2
+push static 2
+push constant 7
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop static 2
+call Rand.loadBag 0
+pop temp 0
+label IF_FALSE0
+push local 0
+return
+function Rand.loadBag 1
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 7
+lt
+not
+if-goto WHILE_END0
+push local 0
+push static 0
+add
+push local 0
+push static 1
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push static 1
+call Rand.makePermutation 1
+pop temp 0
+push constant 0
+return
+function Rand.setSeed 0
+push argument 0
+pop static 3
+push constant 0
+return
+function Rand.getValue 1
+push static 3
+push constant 253
+call Math.multiply 2
+push constant 1
+add
+pop local 0
+push local 0
+push constant 16383
+and
+pop static 3
+push static 3
+return
+function Rand.makePermutation 3
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 6
+lt
+not
+if-goto WHILE_END0
+call Rand.getValue 0
+pop local 2
+push local 0
+push local 2
+add
+push local 2
+push constant 7
+push local 0
+sub
+call Math.divide 2
+push constant 7
+push local 0
+sub
+call Math.multiply 2
+sub
+pop local 1
+push local 0
+push argument 0
+add
+pop pointer 1
+push that 0
+pop local 2
+push local 0
+push argument 0
+add
+push local 1
+push argument 0
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push argument 0
+add
+push local 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
