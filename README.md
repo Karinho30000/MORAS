@@ -1,4 +1,4 @@
-*Moderni Računalni Sustavi*
+# Moderni Računalni Sustavi
 
 Ovaj repozitorij sadrži projekt i zadatke izrađene u sklopu kolegija Moderni Računalni Sustavi. Fokus kolegija bio je na radu s .jack i .vm datotekama, koje se koriste za programiranje unutar virtualnih strojeva i kompajlera.
 
